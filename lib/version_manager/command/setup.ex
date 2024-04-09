@@ -33,20 +33,26 @@ defmodule VersionManager.Command.Setup do
 
   def verify_method({:file_src, @file_src}) do
     # TODO verify if this source is valid ?
+    File.exists?(@file_src)
     {:error, "Non-existent verification method"}
   end
 
   def verify_method({:template_src, @template_src}) do
+    File.exists?(@template_src)
     # TODO verify if this source is valid ?
     {:error, "Non-existent verification method"}
   end
 
   def verify_method({:inital_file_pointer, @inital_file_pointer}) do
+    File.read(@file_src)
+    File.read(@template_src)
     # TODO verify if this pointes is setted on files or template?
     {:error, "Non-existent verification method"}
   end
 
   def verify_method({:end_file_pointer, @end_file_pointer}) do
+    File.read(@file_src)
+    File.read(@template_src)
     # TODO verify if this pointes is setted on files or template?
     {:error, "Non-existent verification method"}
   end
