@@ -1,4 +1,4 @@
-defmodule VersionManager.Command.Cmd do
+defmodule VersionManager.Command.Setup do
   @file_src "~/.bashrc"
   @template_src "./templates/bashrc.htmlx"
 
@@ -12,7 +12,12 @@ defmodule VersionManager.Command.Cmd do
     {:end_file_pointer, @end_file_pointer}
   ]
 
-  def setup() do
+  @spec execute() :: %Stream{
+          :done => nil,
+          :funs => nonempty_maybe_improper_list(),
+          optional(any()) => any()
+        }
+  def execute() do
     verify_processor()
     # TODO WHEN EXIST ERROR STOP PROCESS AND LOG THESE INFORMATION
   end
